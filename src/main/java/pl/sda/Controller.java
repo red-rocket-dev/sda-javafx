@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
@@ -15,7 +16,8 @@ import java.util.Optional;
 
 
 public class Controller {
-
+    @FXML
+    public Label showMessageLabel;
     @FXML
     private Canvas canvas;
     @FXML
@@ -62,13 +64,19 @@ public class Controller {
     }
 
     public void buttonClick(ActionEvent actionEvent) {
-        Window owner = canvas.getScene().getWindow();
+        System.out.println("TEST");
+        /*Window owner = canvas.getScene().getWindow();
         TextInputDialog alert = new TextInputDialog();
         alert.setTitle("Title");
         alert.setHeaderText(null);
         alert.setContentText("Hello world");
         alert.initOwner(owner);
         final Optional<String> result = alert.showAndWait();
-        result.ifPresent(res -> System.out.println(res));
+        result.ifPresent(res -> System.out.println(res));*/
+    }
+
+
+    public void showMessageBtnAction(ActionEvent actionEvent) {
+        showMessageLabel.setText("Hello world!");
     }
 }
