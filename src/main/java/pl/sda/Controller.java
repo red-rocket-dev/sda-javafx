@@ -32,26 +32,11 @@ public class Controller {
 
     public void initialize() throws IOException {
         final GraphicsContext gc = canvas.getGraphicsContext2D();
+
         gc.setFill(Color.BLACK);
-        double width = canvas.getWidth();
-        double height = canvas.getHeight();
-        gc.fillRect(0,0, width, height);
-        //gc.setFill(Color.rgb(200, 0, 0));
-        gc.setFill(Color.YELLOW);
-        double ovalWidth = 200;
-        double ovalHeight = 200;
-        double faceStartY = height / 2 - ovalHeight / 2;
-        double faceStartX = width / 2 - ovalWidth / 2;
-        gc.fillOval(width/2 - ovalWidth/2, height/2 - ovalHeight/2, ovalWidth, ovalHeight);
-        gc.setFill(Color.WHITE);
-        gc.fillOval(faceStartX + 50, faceStartY + 50, 30, 30);
-        gc.fillOval(faceStartX + 125, faceStartY + 50, 30, 30);
-        gc.setFill(Color.BLACK);
-        gc.fillOval(faceStartX + 55, faceStartY + 60, 10, 10);
-        gc.fillOval(faceStartX + 130, faceStartY + 60, 10, 10);
-        gc.setStroke(Color.rgb(200, 0, 0));
-        gc.setLineWidth(4.0);
-        gc.strokeArc(faceStartX + 50, faceStartY + 120, 100, 50, 180, 180, ArcType.OPEN);
+        double xPoints[] = {0, 0, 300};
+        double yPoints[] = {0, 500, 300};
+        gc.fillPolygon(xPoints, yPoints, 3);
     }
 
     private void drawShapes(GraphicsContext gc) {
