@@ -1,17 +1,24 @@
 package pl.sda;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 import javafx.stage.Window;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Optional;
 
 
@@ -23,24 +30,21 @@ public class Controller {
     @FXML
     private Button button;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         final GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.GREEN);
-        gc.fillRect(50,20,100,200);
-        gc.fillOval(160,20,100,200);
-        gc.setFill(Color.BLUE);
-        gc.fillRect(200,400,200,20);
-        gc.fillOval(200,430,200,100);
-
+        gc.setFill(Color.WHITE);
+        gc.fillOval(200, 200, 100, 100);
+        gc.fillOval(150, 300, 150, 150);
+        gc.fillOval(100, 400, 200, 200);
         gc.setFill(Color.BLACK);
-        gc.fillText("Rysowanie jest super.", 400, 500);
-        double x = canvas.getWidth() / 2;
-        double y = canvas.getHeight() / 2;
-        gc.fillText("Pierwsza litera jest na (" + x + "," + y + ")", x, y);
+        gc.fillRect(230, 100, 50, 100);
+        WritableImage snapshot = canvas.snapshot(new SnapshotParameters(), null);
+        ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new FileOutputStream("file.png"));
+        //tutaj pisac
     }
 
     private void drawShapes(GraphicsContext gc) {
-        gc.setFill(Color.GREEN);
+        gc.setFill(Color.rgb(255, 0, 0));
         gc.setStroke(Color.BLUE);
 
         gc.fillRect(400,400,100,100);
@@ -64,15 +68,14 @@ public class Controller {
     }
 
     public void buttonClick(ActionEvent actionEvent) {
-        System.out.println("TEST");
-        /*Window owner = canvas.getScene().getWindow();
+        Window owner = canvas.getScene().getWindow();
         TextInputDialog alert = new TextInputDialog();
         alert.setTitle("Title");
         alert.setHeaderText(null);
         alert.setContentText("Hello world");
         alert.initOwner(owner);
         final Optional<String> result = alert.showAndWait();
-        result.ifPresent(res -> System.out.println(res));*/
+        result.ifPresent(res -> System.out.println(res+"asdasd"));
     }
 
 
