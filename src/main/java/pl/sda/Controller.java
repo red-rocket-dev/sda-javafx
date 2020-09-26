@@ -43,8 +43,6 @@ public class Controller {
         Window owner = canvas.getScene().getWindow();
         TextInputDialog alert = new TextInputDialog();
         alert.setTitle("Ile trojkatow?");
-        alert.setWidth(1000);
-        alert.setHeight(1000);
         alert.setHeaderText(null);
         alert.setContentText("Wprowadz ilosc trojkatow");
         alert.initOwner(owner);
